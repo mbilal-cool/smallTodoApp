@@ -1,0 +1,23 @@
+import {Platform} from 'react-native';
+export const lightThemeColors = {
+  defaultBackground: '#F5F5F5',
+  red: '#ff0000',
+  white: '#ffffff',
+  white2: 'rgba(255, 255, 255, 0.9)',
+  black: '#000000',
+  grey: '#CED4DA',
+  grey1: '#ADB5BD',
+  grey2: '#ebebeb',
+  grey3: '#6C757D',
+  grey4: '#E9ECEF',
+  grey5: 'rgba(0, 0, 0, 0.5)',
+  red1: '#EF5455',
+  red2: '#d00000',
+  black1: '#293151',
+  blue: '#0075FF',
+  darkBlue: '#293151',
+  darkBlue1: '#333F6B',
+  darkBlue2: '#6276BF',
+  pink: 'rgba(239, 84, 85,0.25)',
+  skyBlueLight: '#F3F9FF',
+};
