@@ -11,7 +11,6 @@ const UpdateTodo = ({navigation, route}) => {
   }, []);
   const [todoItem, setTodoItem] = useState(item.item);
   const onUpDateButtonPress = () => {
-    console.log('check updation', todoItem);
     TodoController.updateTodoItemsHandler(todoItem, res => navigation.goBack());
   };
   return (
@@ -46,21 +45,23 @@ const UpdateTodo = ({navigation, route}) => {
             onChangeText={e => setTodoItem(prev => ({...prev, description: e}))}
           />
         </View>
-        <AbstractButton
-          backgroundColor={lightThemeColors.red1}
-          height={40}
-          title={'Update'}
-          titleStyle={{
-            color: lightThemeColors.white,
+        <View style={{marginTop: 25}}>
+          <AbstractButton
+            backgroundColor={lightThemeColors.red1}
+            height={40}
+            title={'Update'}
+            titleStyle={{
+              color: lightThemeColors.white,
 
-            fontWeight: '600',
-            fontSize: 14,
-          }}
-          // iconMargin={10}
-          width={'100%'}
-          borderRadius={30}
-          onPress={onUpDateButtonPress}
-        />
+              fontWeight: '600',
+              fontSize: 14,
+            }}
+            // iconMargin={10}
+            width={'100%'}
+            borderRadius={30}
+            onPress={onUpDateButtonPress}
+          />
+        </View>
       </View>
     </View>
   );
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
   middleContainer: {
     paddingVertical: 20,
     paddingHorizontal: 20,
-    backgroundColor: 'yellow',
+
     flex: 1,
     // height: 450,
     width: '100%',

@@ -7,6 +7,7 @@ import {lightThemeColors} from '../theme';
 import AbstractTodoItem from '../Components/Abstract/abstractTodoItem';
 import AbstractButton from '../Components/Abstract/abstractButton';
 import SearchIconSvg from '../Assets/Icons/searchSvg';
+import AuthController from '../Controller/authController';
 const TodoLists = ({navigation}) => {
   const {allTodoItems, totalNoOFpages} = useSelector(state => state.todo);
   const [searchInput, setSearchInput] = useState('');
@@ -19,7 +20,6 @@ const TodoLists = ({navigation}) => {
     );
   }, []);
   const loadMore = () => {
-    console.log('got working', totalNoOFpages, initialPageValue);
     if (initialPageValue < totalNoOFpages) {
       let tempPage = initialPageValue + 1;
       TodoController.getTodoItemsHandler(
@@ -29,14 +29,20 @@ const TodoLists = ({navigation}) => {
       );
     }
   };
+  const onLogOutButtonPress = () => {
+    AuthController.handleLogoutUser();
+  };
   const onCreateButtonPress = () => {
     navigation.navigate('CreateTodo');
+    setSearchInput('');
   };
   const onEditTodoItemPress = item => {
     navigation.navigate('UpdateTodo', item);
+    setSearchInput('');
   };
   const onDeleteTodoItemPress = id => {
     TodoController.deleteTodoItemsHandler(id, res => console.log('deleted!'));
+    setSearchInput('');
   };
   const searchFilterFunction = txt => {
     setSearchInput(txt);
@@ -60,11 +66,27 @@ const TodoLists = ({navigation}) => {
         backgroundColor={lightThemeColors.red1}
         translucent={true}
       />
-      <View style={styles.headerContainer}>
+      <View style={[styles.headerContainer, {paddingHorizontal: 10}]}>
+        <View style={[styles.col, {width: '20%'}]}>
+          <AbstractButton
+            backgroundColor={lightThemeColors.white}
+            height={30}
+            title={'Logout'}
+            titleStyle={{
+              color: lightThemeColors.black,
+              fontWeight: '600',
+              fontSize: 14,
+            }}
+            // iconMargin={10}
+            width={'90%'}
+            borderRadius={30}
+            onPress={() => onLogOutButtonPress()}
+          />
+        </View>
         <View style={[styles.col]}>
           <Text style={styles.textStyle}>Recently Added Todos</Text>
         </View>
-        <View style={[styles.col, {width: '30%'}]}>
+        <View style={[styles.col, {width: '20%'}]}>
           <AbstractButton
             backgroundColor={'transparent'}
             height={20}
@@ -75,7 +97,7 @@ const TodoLists = ({navigation}) => {
               fontSize: 14,
             }}
             // iconMargin={10}
-            width={'70%'}
+            width={'90%'}
             borderRadius={30}
             onPress={() => onCreateButtonPress()}
           />
@@ -168,9 +190,9 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
   },
   col: {
-    // backgroundColor: 'red',
+    // backgroundColor: 'green',
     height: 50,
-    width: '70%',
+    width: '60%',
     justifyContent: 'center',
     alignItems: 'center',
   },

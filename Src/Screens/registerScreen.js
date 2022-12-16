@@ -117,9 +117,9 @@ const RegisterScreen = ({navigation}) => {
             styles.containerHorizontal,
             {
               // backgroundColor: 'yellow',
-              flex: 0.12,
+              flex: 0.17,
               alignItems: 'center',
-              justifyContent: 'center',
+              justifyContent: 'flex-end',
               paddingBottom: 0,
             },
           ]}>

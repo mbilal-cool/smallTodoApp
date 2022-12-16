@@ -136,7 +136,7 @@ class AuthController {
     AuthController.logoutUser()
       .then(res => {
         if (res) {
-          navigate('LogInScreen');
+          navigate('LoginScreen');
         }
       })
       .catch(err => console.log(err));

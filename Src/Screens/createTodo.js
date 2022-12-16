@@ -9,9 +9,13 @@ const CreateTodo = ({navigation}) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const onDoneButtonPress = () => {
-    TodoController.createTodoHandler({title, description}, res =>
-      navigation.goBack(),
-    );
+    if (title && description) {
+      TodoController.createTodoHandler({title, description}, res =>
+        navigation.goBack(),
+      );
+    } else {
+      navigation.goBack();
+    }
   };
   return (
     <View style={styles.main}>
